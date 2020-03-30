@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import InputForm from './InputForm'
 import { bindActionCreators } from 'redux';
-import { studentsActions } from '../redux/store'
+import { studentActions } from '../redux/store'
 
 // ส่วนแสดงรายชื่อนักเรียนทั้งหมดที่มาจาก server
 
@@ -16,7 +16,7 @@ const StudentList = props => {
   console.log('Student = = = ' + students);
   const dispatch = useDispatch();
 
-  const actionsStudent = bindActionCreators(studentsActions, useDispatch())
+  const actionsStudent = bindActionCreators(studentActions, useDispatch())
 
   // const getStudents = async () => {
 

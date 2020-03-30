@@ -4,6 +4,8 @@ import axios from 'axios'
 import thunk from 'redux-thunk';
 
 axios.defaults.withCredentials = true
+
+
 //ส่วนของการยืนยันตัวตน
 
 const initAuthData = {
@@ -13,7 +15,7 @@ const initAuthData = {
 
 }
 
-export const studentsActions = {
+export const studentActions = {
 
     getStudentsSuccess: students => ({
         type: 'GET_STUDENTS_SUCCESS', students
@@ -55,9 +57,9 @@ export const AuthActions = {
         if (name.length === 10 && pass.length > 6 && username == '6035512034') {
             const res = await axios.post('http://localhost/api/auth/psu', { username, password })
             const { stdId, firstname, lastname, id, type } = res.data;
-        
-            if ( type==' ') {
-                return  alert('username or password incorrect');
+
+            if (type == ' ') {
+                return alert('username or password incorrect');
                 // alert('username or password incorrect');
             }
             else {
@@ -94,6 +96,16 @@ const initialform = {
 
 }
 
+export const formActions = {
+    changeGeneration: (generation) => ({ type: 'CHANGE_GENERATION', generation: generation }),
+    changeIdStudent: (idStudent) => ({ type: 'CHANGE_ID', idStudent: idStudent }),
+    changeName: (name) => ({ type: 'CHANGE_NAME', name: name }),
+    changeSurname: (surname) => ({ type: 'CHANGE_SURNAME', surname: surname }),
+    changeFaculty: (faculty) => ({ type: 'CHANGE_FACULTY', faculty: faculty }),
+    changeAdvisor: (advisor) => ({ type: 'CHANGE_ADVISOR', advisor: advisor })
+}
+
+
 const formReducer = (data = initialform, action) => {
 
     switch (action.type) {
@@ -125,26 +137,28 @@ const studentReducer = (students = [], action) => {
         case 'DELETE_STUDENT':
             return students.filter(student => +student.generation !== +action.generation)
         case 'UPDATE_STUDENT':
-            return students.map((student,index) => {
-                if (+student.generation === +action.generation){
+            return students.map((student, index) => {
+                if (+student.generation === +action.generation) {
                     return action.student;
-            }
+                }
                 else {
                     return student;
                 }
             })
 
-            case 'GET_STUDENTS_SUCCESS':
-                console.log('action: ', action.students)
-                return action.students
-            case 'GET_STUDENTS_FAILED':
-                console.log('action: Failed')
-                return action.students
-    
+        case 'GET_STUDENTS_SUCCESS':
+            console.log('action: ', action.students)
+            return action.students
+        case 'GET_STUDENTS_FAILED':
+            console.log('action: Failed')
+            return action.students
+
     }
 
     return students;
 }
+
+// Reducer เป็นส่วนที่รับ input มาแล้วส่งกระบวนการเปลี่ยนแปลงค่า state
 
 const reducers = combineReducers({
     student: studentReducer,
@@ -152,5 +166,5 @@ const reducers = combineReducers({
     Auth: AuthReducer
 })
 
-
+//เรียกใช้ redux-thunk
 export const store = createStore(reducers, applyMiddleware(logger, thunk));
