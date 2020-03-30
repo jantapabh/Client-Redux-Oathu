@@ -36,11 +36,13 @@ export const studentsActions = {
             ...form
         }
     }),
+
     deleteStudent: (generation) => ({ type: 'DELETE_STUDENT', generation: generation }),
     updateStudent: (generation, form) => ({ type: 'UPDATE_STUDENT', generation: generation, student: { ...form, generation: generation } })
 }
 
 export const AuthActions = {
+    
     getLoginStatus: () => async (dispatch) => {
         const res = await axios.get(`http://localhost/api/auth`)
         dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data });

@@ -29,13 +29,15 @@ const LoginForm = (props) => {
 
 
     useEffect(() => {
+
         getFacebookLink()
+
     }, []);
 
     const LoginPSU = (e) => {
 
         e.preventDefault();
-        actions.loginPSU(username.value, password.value)
+        actions.loginPSU(username, password)
     }
     return (
         <div   className="M">
