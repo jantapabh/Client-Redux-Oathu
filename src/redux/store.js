@@ -53,8 +53,9 @@ export const AuthActions = {
             const { stdId, firstname, lastname, id, type } = res.data;
             console.log(res.data)
             console.log(res.data.type)
-            if ( type=='') {
-                return console.log('username or password incorrect ^^')
+            dispatch({ type: 'LOGIN_PSU', payload: res.data })
+            if ( type==' ') {
+                return console.log('username or password incorrect')
             }
             else {
                 dispatch({ type: 'LOGIN_PSU', payload: res.data })
