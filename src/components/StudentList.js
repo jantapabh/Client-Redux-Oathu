@@ -4,12 +4,14 @@ import './StudentList.css';
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import InputForm from './InputForm'
+import { bindActionCreators } from 'redux';
 
 // ส่วนแสดงรายชื่อนักเรียนทั้งหมดที่มาจาก server
 
 const StudentList = props => {
 
   const students = useSelector(state => state.student);
+
   console.log('Student = = = ' + students);
   const dispatch = useDispatch();
 

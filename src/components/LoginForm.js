@@ -32,7 +32,7 @@ const LoginForm = (props) => {
         getFacebookLink()
     }, []);
 
-    const loginPSU = (e) => {
+    const LoginPSU = (e) => {
 
         e.preventDefault();
         actions.loginPSU(username.value, password.value)
@@ -81,7 +81,7 @@ const LoginForm = (props) => {
                                                             </Form.Group>
                                                         </Form>
                                                     </Card.Text>
-                                                    <Button variant="outline-primary" onClick={loginPSU}>LOGIN</Button>
+                                                    <Button variant="outline-primary" onClick={LoginPSU}>LOGIN</Button>
                                                 </Card.Body>
                                             </Card>
                                         </div>
