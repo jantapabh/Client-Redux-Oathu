@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Route, Switch, BrowserRouter } from 'react-router-dom'
+
 import StudentList from './StudentList'
 import InputForm from './InputForm'
 import FacebookLogin from 'react-facebook-login';
 import './LoginForm.css';
-// import { bindActionCreators } from 'react-redux/node_modules/redux';
+
+
 import { AuthActions } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import config from '../config'
+import { Button, Form, Card } from 'react-bootstrap';
 
 
 const LoginForm = (props) => {
@@ -20,7 +21,7 @@ const LoginForm = (props) => {
     const [password, setPassword] = useState('');
     const getFacebookLink = async () => {
 
-        const res = await axios.get(`${config.apiUrl}/auth/facebook`);
+        const res = await axios.get(`http://localhost/api/auth/facebook`);
         setFacebookLink(res.data);
     }
 
@@ -45,8 +46,8 @@ const LoginForm = (props) => {
                             <Card.Body>
                                 <Card.Title>Facebook LOGIN</Card.Title>
                                 <Card.Text>
-                                    Arim Cheberahim
-                                    6035512059
+                                   Jantapa Binheem
+                                   6035512034
                             </Card.Text>
                                 <Button variant="outline-primary" href={facebookLink}>LOGIN</Button>
                             </Card.Body>
@@ -77,7 +78,7 @@ const LoginForm = (props) => {
                                                             </Form.Group>
                                                         </Form>
                                                     </Card.Text>
-                                                    <Button variant="outline-primary" onClick={LoginPSU}>LOGIN</Button>
+                                                    <Button variant="outline-primary" onClick={loginPSU}>LOGIN</Button>
                                                 </Card.Body>
                                             </Card>
                                         </div>

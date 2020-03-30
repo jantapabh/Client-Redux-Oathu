@@ -1,16 +1,15 @@
 import React, { Component, useState, useEffect } from 'react'
-import axios from 'axios'
 import StudentCard from './components/StudentCard'
 import StudentList from './components/StudentList'
 import InputForm from './components/InputForm'
 import { useSelector, useDispatch, Provider } from 'react-redux'
-
 import LoginForm from './components/LoginForm'
 import { store } from './redux/store'
 import { bindActionCreators } from 'redux'
 import { AuthActions, StudentActions } from '../src/redux/store';
-
-
+import axios from 'axios'
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 axios.defaults.withCredentials = true
 

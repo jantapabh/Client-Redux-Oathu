@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "../../node_modules/redux";
 import logger from 'redux-logger';
 import axios from 'axios'
-import config from '../config'
+
 
 //ส่วนของการยืนยันตัวตน
 
@@ -17,12 +17,12 @@ const initAuthData = {
 
 export const AuthActions = {
     getLoginStatus: () => async (dispatch) => {
-        const res = await axios.get(`${config.apiUrl}/auth`);
+        const res = await axios.get(`http://localhost/api/auth`);
         dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data })
     },
 
     loginPSU: (username, password) => async (dispatch) => {
-        const res = await axios.post(`${config.apiUrl}/auth/psu`, { username, password });
+        const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
         const { stdId, fname, lname, id, type } = res.data;
 
         if (stdId.length > 0)
@@ -31,7 +31,7 @@ export const AuthActions = {
     logout: () => async (dispatch) => {
 
 
-        const res = await axios.get(`${config.apiUrl}/auth/logout`);
+        const res = await axios.get(`http://localhost/api/auth/logout`);
         dispatch({ type: 'LOGOUT' })
 
     }
@@ -40,12 +40,12 @@ export const AuthActions = {
 export const StudentActions = {
     
     getLoginStatus: () => async (dispatch) => {
-        const res = await axios.get(`${config.apiUrl}/auth`);
+        const res = await axios.get(`http://localhost/api/auth`);
         dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data })
     },
 
     loginPSU: (username, password) => async (dispatch) => {
-        const res = await axios.post(`${config.apiUrl}/auth/psu`, { username, password });
+        const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
         const { stdId, fname, lname, id, type } = res.data;
 
         if (stdId.length > 0)
@@ -54,7 +54,7 @@ export const StudentActions = {
     logout: () => async (dispatch) => {
 
 
-        const res = await axios.get(`${config.apiUrl}/auth/logout`);
+        const res = await axios.get(`http://localhost/api/auth/logout`);
         dispatch({ type: 'LOGOUT' })
 
     }
