@@ -21,9 +21,8 @@ export const studentsActions = {
     getStudentsFailed: () => ({ type: 'GET_STUDENTS_FAILED' }),
     getStudents: () => async (dispatch) => {
         try {
-
             console.log('get Student New')
-            const response = await axios.get(`http://localhost:80/api/students`)
+            const response = await axios.get(`http://localhost/api/students`)
             const responseBody = await response.data;
             console.log('response: ', responseBody)
             dispatch({ type: 'GET_STUDENTS_SUCCESS', students: responseBody });
@@ -55,7 +54,7 @@ export const AuthActions = {
             const { stdId, firstname, lastname, id, type } = res.data;
             console.log(res.data)
             console.log(res.data.type)
-            if ( name != '6035512034' && pass != 'jantapa2407.') {
+            if ( type=='') {
                 return console.log('username or password incorrect ^^')
             }
             else {

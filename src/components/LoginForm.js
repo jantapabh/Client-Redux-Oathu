@@ -27,7 +27,7 @@ const LoginForm = (props) => {
         setFacebookLink(res.data);
     }
 
-    
+
     useEffect(() => {
         getFacebookLink()
     }, []);

@@ -1,4 +1,4 @@
-require('tls').DEFAULT_MIN_VERSION = 'TLSv1'   // since TLSv1.3 default disable v1.0 
+require('tls').DEFAULT_MIN_VERSION = 'TLSv1'   // since TLSv1.3 default disable v1.0    // since TLSv1.3 default disable v1.0 
 const express = require('express');
 const soap = require('soap');
 const bodyParser = require('body-parser')
@@ -7,6 +7,9 @@ const app = express()
 const router = express.Router()
 app.use(bodyParser.urlencoded({ extended: false }), router)
 app.use(bodyParser.json, router)
+
+
+
 module.exports.login = function (req, res) {
     soap.createClient(url, (err, client) => {
         if (err) console.error(err);

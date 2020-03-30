@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import './InputForm.css';
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { bearActions } from '../redux/store'
+import { bindActionCreators } from 'redux';
+import { Button } from 'react-bootstrap';
 
 const InputForm = props => {
 
+  
     const dispatch = useDispatch();
     const form = useSelector(state => state.form)
     const students = useSelector(state => state.student)
