@@ -14,17 +14,19 @@ const initAuthData = {
 }
 
 export const studentsActions = {
+
     getStudentsSuccess: students => ({
         type: 'GET_STUDENTS', students
     }),
     getStudentsFailed: () => ({ type: 'GET_STUDENTS_FAILED' }),
+
     getStudents: () => async (dispatch) => {
         try {
             console.log('get Student New')
-            const response = await axios.get(`http://localhost/api/students`)
+            const response = await axios.get(`http://localhost:80/api/students`)
             const responseBody = await response.data;
             console.log('response: ', responseBody)
-            dispatch({ type: 'GET_STUDENTS_SUCCESS', students: responseBody });
+            dispatch({ type: 'GET_STUDENTS', students: responseBody });
         } catch (error) {
             console.error(error);
             dispatch({ type: 'GET_STUDENTS_FAILED' });
@@ -42,7 +44,7 @@ export const studentsActions = {
 }
 
 export const AuthActions = {
-    
+
     getLoginStatus: () => async (dispatch) => {
         const res = await axios.get(`http://localhost/api/auth`)
         dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data });
