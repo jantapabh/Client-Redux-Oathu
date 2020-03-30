@@ -3,14 +3,12 @@ let bodyParser = require('body-parser');
 const session = require('express-session')
 let cors = require('cors')
 let ngrok = require('ngrok');
-
-
-
+const FB = require('./fb')
+const env = require('dotenv').config()
+var request = require('request');
 let authRoutes = require('./routes/auth');
 let fbRoutes = require('./routes/fb');
 let psuRoute = require('./routes/psu');
-
-
 let app = express()
 let router = express.Router()
 
