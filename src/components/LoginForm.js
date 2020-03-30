@@ -20,7 +20,7 @@ const LoginForm = (props) => {
     const [facebookLink, setFacebookLink] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const getFacebookLink = async () => {
 
         const res = await axios.get(`http://localhost/api/auth/facebook`);
@@ -35,7 +35,7 @@ const LoginForm = (props) => {
 
         e.preventDefault();
         // const { username, password } = e.target.elements
-        actions.loginPSU(username, password)
+        actions.loginPSU(username.value, password.value)
     }
     return (
         <div>

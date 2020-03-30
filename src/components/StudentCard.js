@@ -11,13 +11,13 @@ const StudentCard = props => {
     const dispatch = useDispatch();
 
     const deleteStudent = async () => {
-        await axios.delete(`http://localhost:8000/api/students/${props.generation}`)
+        await axios.delete(`http://localhost:80/api/students/${props.generation}`)
         dispatch({ type: 'DELETE_STUDENT', generation: props.generation })
     }
 
     const updateStudent = async () => {
 
-        await axios.put(`http://localhost:8000/api/students/${props.generation}`, form)
+        await axios.put(`http://localhost:80/api/students/${props.generation}`, form)
         dispatch({ type: 'UPDATE_STUDENT', generation: props.generation, student: { ...form, generation: props.generation } })
     }
 

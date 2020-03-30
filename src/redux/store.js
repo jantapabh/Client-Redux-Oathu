@@ -23,7 +23,9 @@ export const AuthActions = {
     },
 
     loginPSU: (username, password) => async (dispatch) => {
-        if (+username.length === 10 && +password.length > 6) {
+        const name = username + '' ;
+        const pass = password + '' ;
+        if ( name.length === 10 && pass.length > 6) {
             const res = await axios.post('http://localhost/api/auth/psu', { username, password })
             const { stdId, firstname, lastname, id, type } = res.data;
             console.log(res.data)
