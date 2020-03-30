@@ -38,13 +38,12 @@ const StudentList = props => {
   return (
 
     <div>{
+      
       students.map((student, index) => (
         <div key={index} style={{ margin: 5 }}>
           <StudentCard {...student} updateStudent={() => props.updateStudent(student.generation)} deleteStudent={() => props.deleteStudent(student.generation)} />
         </div>
-        // <div>
-        //   <InputForm />
-        // </div>
+
 
       ))
 

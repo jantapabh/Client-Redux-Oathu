@@ -1,6 +1,8 @@
 import React from 'react';
 import './StudentCard.css';
 import axios from 'axios';
+import { studentsActions } from '../redux/store'
+import { bindActionCreators } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 // ส่วนจัดการ update และ delete ข้อมูลของนักเรียน
 
@@ -8,17 +10,18 @@ import { useSelector, useDispatch } from 'react-redux';
 const StudentCard = props => {
 
     const form = useSelector(state => state.form)
+    const actions = bindActionCreators(studentsActions, useDispatch)
     const dispatch = useDispatch();
 
     const deleteStudent = async () => {
-        await axios.delete(`http://localhost:80/api/students/${props.generation}`)
-        dispatch({ type: 'DELETE_STUDENT', generation: props.generation })
+        await axios.delete(`http://localhost/api/students/${props.generation}`)
+      actions.deleteStudent(props.generation)
     }
 
     const updateStudent = async () => {
 
-        await axios.put(`http://localhost:80/api/students/${props.generation}`, form)
-        dispatch({ type: 'UPDATE_STUDENT', generation: props.generation, student: { ...form, generation: props.generation } })
+        await axios.put(`http://localhost/api/students/${props.generation}`, form)
+       actions.updateStudent(props.generation, form)
     }
 
     return (

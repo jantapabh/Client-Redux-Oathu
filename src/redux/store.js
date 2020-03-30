@@ -52,14 +52,13 @@ export const AuthActions = {
     loginPSU: (username, password) => async (dispatch) => {
         const name = username + ''
         const pass = password + ''
-        if (name.length === 10 && pass.length > 6) {
+        if (name.length === 10 && pass.length > 6 && username == '6035512034') {
             const res = await axios.post('http://localhost/api/auth/psu', { username, password })
             const { stdId, firstname, lastname, id, type } = res.data;
-            console.log(res.data)
-            console.log(res.data.type)
-            dispatch({ type: 'LOGIN_PSU', payload: res.data })
+        
             if ( type==' ') {
-                return console.log('username or password incorrect')
+                return  alert('username or password incorrect');
+                // alert('username or password incorrect');
             }
             else {
                 dispatch({ type: 'LOGIN_PSU', payload: res.data })
