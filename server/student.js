@@ -169,4 +169,4 @@ router.route('/auth/psu')
 
 app.use("*", (req, res) => res.status(404).send('404 Not found'));
 
-app.listen(8000, () => { console.log('server is running') })
+app.listen(80, () => { console.log('server is running') })
