@@ -47,7 +47,6 @@ const App = () => {
 
     <div>
       <StudentList />
-      <InputForm />
       <button variant="outline-danger" onClick={() => actions.logout()}>Log Out!!</button>
     </div>
 

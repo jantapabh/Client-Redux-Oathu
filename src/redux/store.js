@@ -14,49 +14,41 @@ const initAuthData = {
 
 }
 
+export const studentsActions = {
+    getStudentsSuccess: students => ({
+        type: 'GET_STUDENTS_SUCCESS', students
+    }),
+    getStudentsFailed: () => ({ type: 'GET_STUDENTS_FAILED' }),
+    getStudents: () => async (dispatch) => {
+        try {
 
+            console.log('get Student New')
+            const response = await axios.get(`http://localhost:80/api/students`)
+            const responseBody = await response.data;
+            console.log('response: ', responseBody)
+            dispatch({ type: 'GET_STUDENTS_SUCCESS', students: responseBody });
+        } catch (error) {
+            console.error(error);
+            dispatch({ type: 'GET_STUDENTS_FAILED' });
+        }
+    },
+    addStudent: (students, form) => ({
+        type: 'ADD_STUDENT', students: {
+            generation: students.length > 0 ? students[students.length - 1].generation + 1 : 0,
+            ...form
+        }
+    }),
+    deleteStudent: (generation) => ({ type: 'DELETE_STUDENT', generation: generation }),
+    updateStudent: (generation, form) => ({ type: 'UPDATE_STUDENT', generation: generation, student: { ...form, generation: generation } })
+}
 
 export const AuthActions = {
     getLoginStatus: () => async (dispatch) => {
-        const res = await axios.get(`http://localhost/api/auth`);
-        dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data })
+        const res = await axios.get(`http://localhost/api/auth`)
+        dispatch({ type: 'GET_LOGIN_ATATUS', payload: res.data });
     },
-
     loginPSU: (username, password) => async (dispatch) => {
-        const name = username + '' ;
-        const pass = password + '' ;
-        if ( name.length === 10 && pass.length > 6) {
-            const res = await axios.post('http://localhost/api/auth/psu', { username, password })
-            const { stdId, firstname, lastname, id, type } = res.data;
-            console.log(res.data)
-            if (type == '') {
-                return console.log('username or password incorrect ^^')
-            }
-            else {
-                dispatch({ type: 'LOGIN_PSU', payload: res.data })
-            }
-        }
-    
-    },
-    logout: () => async (dispatch) => {
-
-
-        const res = await axios.get(`http://localhost/api/auth/logout`);
-        dispatch({ type: 'LOGOUT' })
-
-    }
-
-}
-export const StudentActions = {
-    
-    getLoginStatus: () => async (dispatch) => {
-        const res = await axios.get(`http://localhost/api/auth`);
-        dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data })
-    },
-
-    loginPSU: (username, password) => async (dispatch) => {
-        // const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
-        // const { stdId, fname, lname, id, type } = res.data;
+        console.log(+username.length)
         if (+username.length === 10 && +password.length > 6) {
             const res = await axios.post('http://localhost/api/auth/psu', { username, password })
             const { stdId, firstname, lastname, id, type } = res.data;
@@ -70,26 +62,17 @@ export const StudentActions = {
         }
     },
     logout: () => async (dispatch) => {
-
-
-        const res = await axios.get(`http://localhost/api/auth/logout`);
+        const res = await axios.get(`http://localhost/api/auth/logout`)
         dispatch({ type: 'LOGOUT' })
-
     }
-
 }
+
 const AuthReducer = (data = initAuthData, action) => {
-
     switch (action.type) {
-        case 'GET_LOGIN_STATUS':
-            return action.payload;
-        case 'LOGIN_PSU':
-            return { ...data, psuInfo: action.payload }
-        case 'LOGOUT':
-            return initAuthData;
-        default:
-            return data
-
+        case 'GET_LOGIN_ATATUS': return action.payload;
+        case 'LOGIN_PSU': return { ...data, psuInfo: action.payload };
+        case 'LOGOUT': return initAuthData
+        default: return data
     }
 }
 
