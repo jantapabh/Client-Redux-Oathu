@@ -46,7 +46,9 @@ const App = () => {
   return (
 
     <div>
+      <h2>Student</h2>
       <StudentList />
+      <InputForm />
       <button variant="outline-danger" onClick={() => actions.logout()}>Log Out!!</button>
     </div>
 

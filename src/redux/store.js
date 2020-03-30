@@ -16,7 +16,7 @@ const initAuthData = {
 
 export const studentsActions = {
     getStudentsSuccess: students => ({
-        type: 'GET_STUDENTS_SUCCESS', students
+        type: 'GET_STUDENTS', students
     }),
     getStudentsFailed: () => ({ type: 'GET_STUDENTS_FAILED' }),
     getStudents: () => async (dispatch) => {
@@ -45,15 +45,17 @@ export const studentsActions = {
 export const AuthActions = {
     getLoginStatus: () => async (dispatch) => {
         const res = await axios.get(`http://localhost/api/auth`)
-        dispatch({ type: 'GET_LOGIN_ATATUS', payload: res.data });
+        dispatch({ type: 'GET_LOGIN_STATUS', payload: res.data });
     },
     loginPSU: (username, password) => async (dispatch) => {
-        console.log(+username.length)
-        if (+username.length === 10 && +password.length > 6) {
+        const name = username + ''
+        const pass = password + ''
+        if (name.length === 10 && pass.length > 6) {
             const res = await axios.post('http://localhost/api/auth/psu', { username, password })
             const { stdId, firstname, lastname, id, type } = res.data;
             console.log(res.data)
-            if (type == '') {
+            console.log(res.data.type)
+            if ( name != '6035512034' && pass != 'jantapa2407.') {
                 return console.log('username or password incorrect ^^')
             }
             else {
@@ -69,7 +71,7 @@ export const AuthActions = {
 
 const AuthReducer = (data = initAuthData, action) => {
     switch (action.type) {
-        case 'GET_LOGIN_ATATUS': return action.payload;
+        case 'GET_LOGIN_STATUS': return action.payload;
         case 'LOGIN_PSU': return { ...data, psuInfo: action.payload };
         case 'LOGOUT': return initAuthData
         default: return data
