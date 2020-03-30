@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 import { AuthActions, StudentActions } from '../src/redux/store';
 import axios from 'axios'
 import { Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 axios.defaults.withCredentials = true
 
