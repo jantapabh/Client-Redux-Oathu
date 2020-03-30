@@ -128,11 +128,9 @@ const studentReducer = (students = [], action) => {
             return students.map((student,index) => {
                 if (+student.generation === +action.generation){
                     return action.student;
-
             }
                 else {
                     return student;
-
                 }
             })
 
