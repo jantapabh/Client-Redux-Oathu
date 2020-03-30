@@ -9,12 +9,14 @@ var request = require('request');
 let authRoutes = require('./routes/auth');
 let fbRoutes = require('./routes/fb');
 let psuRoutes = require('./routes/psu');
+
+
+
 let app = express()
 let router = express.Router()
 
 // session is not define
 
-app.use(cors())
 app.use(cors({origin: ['http://localhost:3000'],methods: ['GET', 'POST', 'PUT','DELETE'], credentials: true}));
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 },
    resave : false, saveUninitialized: false }))
