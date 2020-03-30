@@ -37,14 +37,14 @@ const LoginForm = (props) => {
         actions.loginPSU(username.value, password.value)
     }
     return (
-        <div>
+        <div   className="M">
             <div>
+            <h1 className="h1">LOGIN FORM</h1>
                 <div>
-                    <h1 className="h1">LOGIN FORM</h1>
                     <br />
                     <br />
                     <div className="last">
-                        <Card style={{ width: '20rem' }}>
+                        <Card style={{ display: 'flex', justifyContent: 'center' }}>
                             <Card.Body>
                                 <Card.Title className="topic">Facebook LOGIN</Card.Title>
                                 <br />
@@ -55,28 +55,28 @@ const LoginForm = (props) => {
                                 <br />
                             </Card.Body>
                         </Card>
-                    </div>
+                        </div>
                     {' '}
                     <div>
-                        <div className="">
+                        <div>
                             <form>
                                 <div>
                                     <div>
-                                        {/* USERNAME : <input type="text" name="username" />
-                            PASSWORD : <input type="password" name="password" /> */}
-                                        <div>
-                                            <Card style={{ width: '20rem' }}>
+                                        <div className="last">
+                                            <Card>
                                                 <Card.Body>
-                                                    <Card.Title>PSU LOGIN</Card.Title>
+                                                    <Card.Title className="topic">PSU LOGIN</Card.Title>
                                                     <Card.Text>
-                                                        <Form style={{ width: '18rem' }}>
+                                                        <Form>
                                                             <Form.Group controlId="formBasicEmail">
                                                                 <Form.Label>Username</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Username" name="username" onChange={(e)=>setUsername(e.target.value)}/>
+                                                                <br />
+                                                                <Form.Control type="text" placeholder="Put Username" name="username" onChange={(e)=>setUsername(e.target.value)}/>
                                                             </Form.Group>
                                                             <Form.Group controlId="formBasicPassword">
                                                                 <Form.Label>Password</Form.Label>
-                                                                <Form.Control type="password" placeholder="Password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
+                                                                <br />
+                                                                <Form.Control type="password" placeholder="Put Password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
                                                             </Form.Group>
                                                         </Form>
                                                     </Card.Text>
@@ -89,6 +89,7 @@ const LoginForm = (props) => {
                             </form>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         </div>
