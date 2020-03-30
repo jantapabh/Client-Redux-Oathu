@@ -138,6 +138,7 @@ const studentReducer = (students = [], action) => {
 const reducers = combineReducers({
     student: studentReducer,
     form: formReducer,
+    Auth: AuthReducer
 })
 
 

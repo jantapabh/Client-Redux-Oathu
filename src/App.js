@@ -20,14 +20,13 @@ axios.defaults.withCredentials = true
 
 const App = () => {
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const auth = useSelector(state => state.Auth);
   const actions = bindActionCreators(AuthActions , useDispatch())
 
   useEffect(() => {
 
-    actions.getLoginStatus().then(res => setLoading(false));
-
+    actions.getLoginStatus().then(res => setLoading(false))
 
   }, []);
 
