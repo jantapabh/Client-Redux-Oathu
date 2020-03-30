@@ -9,6 +9,7 @@ var request = require('request');
 let authRoutes = require('./routes/auth');
 let fbRoutes = require('./routes/fb');
 let psuRoute = require('./routes/psu');
+const env = require('dotenv').config()
 let app = express()
 let router = express.Router()
 

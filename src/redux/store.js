@@ -23,13 +23,16 @@ export const AuthActions = {
     },
 
     loginPSU: (username, password) => async (dispatch) => {
-        const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
-        const { stdId, fname, lname, id, type } = res.data;
-        if (type == '') {
-            return console.log('username or password incorrect ^^')
-        }
-        else {
-            dispatch({ type: 'LOGIN_PSU', payload: res.data })
+        if (+username.length === 10 && +password.length > 6) {
+            const res = await axios.post('http://localhost/api/auth/psu', { username, password })
+            const { stdId, firstname, lastname, id, type } = res.data;
+            console.log(res.data)
+            if (type == '') {
+                return console.log('username or password incorrect ^^')
+            }
+            else {
+                dispatch({ type: 'LOGIN_PSU', payload: res.data })
+            }
         }
     
     },
@@ -50,11 +53,19 @@ export const StudentActions = {
     },
 
     loginPSU: (username, password) => async (dispatch) => {
-        const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
-        const { stdId, fname, lname, id, type } = res.data;
-
-        if (stdId.length > 0)
-            dispatch({ type: 'LOGIN_PSU', payload: res.data })
+        // const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
+        // const { stdId, fname, lname, id, type } = res.data;
+        if (+username.length === 10 && +password.length > 6) {
+            const res = await axios.post('http://localhost/api/auth/psu', { username, password })
+            const { stdId, firstname, lastname, id, type } = res.data;
+            console.log(res.data)
+            if (type == '') {
+                return console.log('username or password incorrect ^^')
+            }
+            else {
+                dispatch({ type: 'LOGIN_PSU', payload: res.data })
+            }
+        }
     },
     logout: () => async (dispatch) => {
 
@@ -142,4 +153,4 @@ const reducers = combineReducers({
 })
 
 
-export const store = createStore(reducers, applyMiddleware(logger));
+export const store = createStore(reducers, applyMiddleware(logger, thunk));
