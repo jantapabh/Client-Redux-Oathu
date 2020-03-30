@@ -35,7 +35,8 @@ const LoginForm = (props) => {
 
     const LoginPSU = (e) => {
 
-        //ในส่วนของ login นั้นจะเข้าได้เฉพาะ 6035512034
+        //ในส่วนของ login นั้นจะเข้าได้เฉพาะ  username = 6035512034 แต่รหัสเป็นอะไรก็ได้มากกว่า 6 ตักอักษร 
+        //กำหนดเงื่อนไขไว้ให้เช็คในส่วน username
 
         e.preventDefault();
         actions.loginPSU(username, password)
