@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "../../node_modules/redux";
 import logger from 'redux-logger';
 import axios from 'axios'
+import thunk from 'redux-thunk';
 
-
+axios.defaults.withCredentials = true
 //ส่วนของการยืนยันตัวตน
 
 
@@ -24,9 +25,13 @@ export const AuthActions = {
     loginPSU: (username, password) => async (dispatch) => {
         const res = await axios.post(`http://localhost/api/auth/psu`, { username, password });
         const { stdId, fname, lname, id, type } = res.data;
-
-        if (stdId.length > 0)
+        if (type == '') {
+            return console.log('username or password incorrect ^^')
+        }
+        else {
             dispatch({ type: 'LOGIN_PSU', payload: res.data })
+        }
+    
     },
     logout: () => async (dispatch) => {
 
