@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import InputForm from './InputForm'
 import { bindActionCreators } from 'redux';
+import { studentsActions } from '../redux/store'
 
 // ส่วนแสดงรายชื่อนักเรียนทั้งหมดที่มาจาก server
 
@@ -15,16 +16,18 @@ const StudentList = props => {
   console.log('Student = = = ' + students);
   const dispatch = useDispatch();
 
-  const getStudents = async () => {
+  const actionsStudent = bindActionCreators(studentsActions, useDispatch())
 
-    const result = await axios.get(`http://localhost:80/api/students`)
-    const action = { type: 'GET_STUDENTS', students: result.data };
-    dispatch(action)
-  }
+  // const getStudents = async () => {
+
+  //   const result = await axios.get(`http://localhost/api/students`)
+  //   const action = { type: 'GET_STUDENTS', students: result.data };
+  //   dispatch(action)
+  // }
 
   useEffect(() => {
 
-    getStudents()
+    actionsStudent.getStudents()
 
   }, [])
 
@@ -41,7 +44,7 @@ const StudentList = props => {
       
       students.map((student, index) => (
         <div key={index} style={{ margin: 5 }}>
-          <StudentCard {...student} updateStudent={() => props.updateStudent(student.generation)} deleteStudent={() => props.deleteStudent(student.generation)} />
+          <StudentCard {...student}/>
         </div>
 
 
@@ -50,15 +53,10 @@ const StudentList = props => {
 
     }
 
-      <div>
-        <InputForm />
-      </div>
-
-
     </div>
 
   )
 
-}
+  }
 
 export default StudentList;

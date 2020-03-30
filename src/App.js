@@ -48,6 +48,7 @@ const App = () => {
 
     <div>
       <StudentList />
+      <InputForm />
       <div className="Button3">
         <button className="Display" onClick={() => actions.logout()}>Log Out!!</button>
       </div>

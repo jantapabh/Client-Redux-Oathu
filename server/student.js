@@ -14,11 +14,12 @@ let router = express.Router()
 
 // session is not define
 
-app.use(cors({origin: ['http://localhost:3000'], methods: ['GET', 'POST'], credentials: true}));
+app.use(cors())
+app.use(cors({origin: ['http://localhost:3000'],methods: ['GET', 'POST', 'PUT','DELETE'], credentials: true}));
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 },
    resave : false, saveUninitialized: false }))
 
-//ส่วนการทำงานการดึงค่าจาก API
+//ส่วนการทำงานการดึงค่าจาก APIx
 
 app.use('/api', bodyParser.json(), router)
 app.use('/api', bodyParser.urlencoded({

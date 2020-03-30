@@ -16,17 +16,17 @@ const initAuthData = {
 export const studentsActions = {
 
     getStudentsSuccess: students => ({
-        type: 'GET_STUDENTS', students
+        type: 'GET_STUDENTS_SUCCESS', students
     }),
     getStudentsFailed: () => ({ type: 'GET_STUDENTS_FAILED' }),
 
     getStudents: () => async (dispatch) => {
         try {
             console.log('get Student New')
-            const response = await axios.get(`http://localhost:80/api/students`)
+            const response = await axios.get(`http://localhost/api/students`)
             const responseBody = await response.data;
             console.log('response: ', responseBody)
-            dispatch({ type: 'GET_STUDENTS', students: responseBody });
+            dispatch({ type: 'GET_STUDENTS_SUCCESS', students: responseBody });
         } catch (error) {
             console.error(error);
             dispatch({ type: 'GET_STUDENTS_FAILED' });
@@ -131,7 +131,16 @@ const studentReducer = (students = [], action) => {
                 else
                     return student;
             })
+
+            case 'GET_STUDENTS_SUCCESS':
+                console.log('action: ', action.students)
+                return action.students
+            case 'GET_STUDENTS_FAILED':
+                console.log('action: Failed')
+                return action.students
+    
     }
+
     return students;
 }
 
