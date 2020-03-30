@@ -38,19 +38,21 @@ const LoginForm = (props) => {
     }
     return (
         <div>
-            <div className="d-flex justify-content-center">
-                <div className="d-flex flex-column bd-highlight mb-2">
+            <div>
+                <div>
                     <h1 className="h1">LOGIN FORM</h1>
                     <br />
                     <br />
-                    <div>
+                    <div className="last">
                         <Card style={{ width: '20rem' }}>
                             <Card.Body>
                                 <Card.Title className="topic">Facebook LOGIN</Card.Title>
                                 <br />
                                 <br />
-                                <br />
+                        
                                 <Button href={facebookLink}>LOGIN</Button>
+                                <br />
+                                <br />
                             </Card.Body>
                         </Card>
                     </div>
