@@ -37,15 +37,16 @@
   }
 }
 
-.Button {
+.Button3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 150px;
+  width: 1600px;
+  height: 100px;
   background-color: blue;
   font-size: 3em;
   font-family: 'Courier New', Courier, monospace;
+  border-radius: 15px;
 
 }
 
@@ -53,4 +54,10 @@
 
   display: flex;
   justify-content: center;
+  background-color: burlywood;
+  width: 100px;
+  height: 50px;
+  border-radius: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  
 }

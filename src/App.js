@@ -47,10 +47,9 @@ const App = () => {
   return (
 
     <div>
-      <h2 >Student</h2>
       <StudentList />
-      <div className="Display">
-        <button className="Button" onClick={() => actions.logout()}>Log Out!!</button>
+      <div className="Button3">
+        <button className="Display" onClick={() => actions.logout()}>Log Out!!</button>
       </div>
     </div>
 
