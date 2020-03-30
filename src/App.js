@@ -32,28 +32,27 @@ const App = () => {
 
   }, []);
 
-  if (loading)
+  if (loading) {
     return "Loading ..."
-
-  if (!auth.accessToken && !auth.psuInfo)
+  }
+  if (!auth.accessToken && !auth.psuInfo) {
 
     return (
-      <Provider>
+
       <div>
         <LoginForm />
       </div>
-      </Provider>
-    )
 
+    )
+  }
   return (
- 
-      <Provider>
-           <div>
+
+    <div>
       <StudentList />
       <InputForm />
       <button onClick={() => actions.logout()}>Log Out!!</button>
     </div>
-    </Provider>
+
 
   )
 }
