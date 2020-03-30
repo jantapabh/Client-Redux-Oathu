@@ -15,17 +15,10 @@ const InputForm = props => {
     const form = useSelector(state => state.form)
     const students = useSelector(state => state.student)
 
-
+//Use bindActionCreators
     const addStudent = async () => {
 
-    await axios.post(`http://localhost/api/students/`, form)
-
-    // dispatch({
-    //     type: 'ADD_STUDENT', student: {
-    //         id: students.length > 0 ? students[students.length - 1].id + 1 : 0,
-    //         ...form
-    //     }
-    // })
+    await axios.post(`http://localhost/api/students`, form)
 
     actionsStudent.addStudent(students, form)
 
@@ -75,7 +68,7 @@ return (
                 <tr>
                     <td></td>
                     <td>
-                        <button className='btn' onClick={() => addStudent()}>CREATE</button>
+                        <button className='btn' onClick={addStudent}>CREATE</button>
                     </td>
                 </tr>
             </tbody>
