@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+  font-size: 3em;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+
+.Display {
+
+  display: flex;
+  justify-content: center;
+}

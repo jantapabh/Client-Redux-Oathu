@@ -9,6 +9,7 @@ import axios from 'axios'
 import { Button } from 'react-bootstrap';
 import { AuthActions } from './redux/store'
 import { bindActionCreators } from 'redux';
+import './App.css'
 
 
 
@@ -22,7 +23,7 @@ const App = () => {
 
   const [loading, setLoading] = useState(false)
   const auth = useSelector(state => state.Auth);
-  const actions = bindActionCreators(AuthActions , useDispatch())
+  const actions = bindActionCreators(AuthActions, useDispatch())
 
   useEffect(() => {
 
@@ -46,12 +47,12 @@ const App = () => {
   return (
 
     <div>
-      <h2>Student</h2>
+      <h2 >Student</h2>
       <StudentList />
-      <InputForm />
-      <button variant="outline-danger" onClick={() => actions.logout()}>Log Out!!</button>
+      <div className="Display">
+        <button className="Button" onClick={() => actions.logout()}>Log Out!!</button>
+      </div>
     </div>
-
 
   )
 }

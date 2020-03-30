@@ -44,7 +44,6 @@ const LoginForm = (props) => {
                     <h1>HELLO LOGIN HW8</h1>
                     <div>
                         <Card style={{ width: '20rem' }}>
-                            <Card.Img variant="top" src="https://www.beartai.com/wp-content/uploads/2015/07/facebook_2015_logo_detail.png" />
                             <Card.Body>
                                 <Card.Title>Facebook LOGIN</Card.Title>
                                 <Card.Text>
@@ -65,7 +64,6 @@ const LoginForm = (props) => {
                             PASSWORD : <input type="password" name="password" /> */}
                                         <div>
                                             <Card style={{ width: '20rem' }}>
-                                                <Card.Img variant="top" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png" />
                                                 <Card.Body>
                                                     <Card.Title>PSU LOGIN</Card.Title>
                                                     <Card.Text>
