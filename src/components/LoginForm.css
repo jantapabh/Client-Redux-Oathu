@@ -1,6 +1,6 @@
 .Main {
 
-    align-items: center;
+ 
     justify-content: center;
     display: flex;
 }
@@ -10,4 +10,20 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    background-color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px;
+    margin: 5px;
+}
+.topic {
+    font-size: 1.5em;
+    background-color: coral;
+    display: flex;
+    justify-content: center;
+    margin-left: 5px;
+    padding-left: 5px;
 }

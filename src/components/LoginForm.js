@@ -34,23 +34,23 @@ const LoginForm = (props) => {
     const loginPSU = (e) => {
 
         e.preventDefault();
-        // const { username, password } = e.target.elements
         actions.loginPSU(username.value, password.value)
     }
     return (
         <div>
             <div className="d-flex justify-content-center">
                 <div className="d-flex flex-column bd-highlight mb-2">
-                    <h1>HELLO LOGIN HW8</h1>
+                    <h1 className="h1">LOGIN FORM</h1>
+                    <br />
+                    <br />
                     <div>
                         <Card style={{ width: '20rem' }}>
                             <Card.Body>
-                                <Card.Title>Facebook LOGIN</Card.Title>
-                                <Card.Text>
-                                   Jantapa Binheem
-                                   6035512034
-                            </Card.Text>
-                                <Button variant="outline-primary" href={facebookLink}>LOGIN</Button>
+                                <Card.Title className="topic">Facebook LOGIN</Card.Title>
+                                <br />
+                                <br />
+                                <br />
+                                <Button href={facebookLink}>LOGIN</Button>
                             </Card.Body>
                         </Card>
                     </div>
