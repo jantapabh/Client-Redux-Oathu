@@ -12,11 +12,7 @@ import { studentActions } from '../redux/store'
 const StudentList = props => {
 
   const students = useSelector(state => state.student);
-
-  console.log('Student = = = ' + students);
-  const dispatch = useDispatch();
-
-  const actionsStudent = bindActionCreators(studentActions, useDispatch())
+  const actionsStudent = bindActionCreators(studentActions, useDispatch());
 
   // const getStudents = async () => {
 
