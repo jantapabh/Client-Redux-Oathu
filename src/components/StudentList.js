@@ -14,13 +14,6 @@ const StudentList = props => {
   const students = useSelector(state => state.student);
   const actionsStudent = bindActionCreators(studentActions, useDispatch());
 
-  // const getStudents = async () => {
-
-  //   const result = await axios.get(`http://localhost/api/students`)
-  //   const action = { type: 'GET_STUDENTS', students: result.data };
-  //   dispatch(action)
-  // }
-
   useEffect(() => {
 
     actionsStudent.getStudents()
