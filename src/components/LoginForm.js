@@ -35,6 +35,8 @@ const LoginForm = (props) => {
 
     const LoginPSU = (e) => {
 
+        //ในส่วนของ login นั้นจะเข้าได้เฉพาะ 6035512034
+
         e.preventDefault();
         actions.loginPSU(username, password)
     }
